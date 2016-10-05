@@ -48,6 +48,7 @@ fire.reaction.to.time <- data.frame(fire.reaction.to.time)
 fire.reaction.to.time[,2] <- mapply(function(start, end) difftime(strptime(end, format=time.format), strptime(start, format=time.format), units="mins"), fire_floor_data[,3], fire_floor_data[,4])
 fire.reaction.to.time <- na.omit(fire.reaction.to.time)
 summary(fire.reaction.to.time)
+colnames(fire.reaction.to.time) <- c("Reaction", "Time")
 plot(fire.reaction.to.time[,1], fire.reaction.to.time[,2],
      col="#FF3D00", type="p",
      pch=16,
