@@ -1,4 +1,6 @@
 setwd("C:\\Users\\user\\Desktop\\rwd")
+# используем эту опцию, чтобы видеть числа на графике в удобном формате
+# т.е. НЕ в экспоненциальной записи
 options(scipen=5)
 
 fire_data <- read.csv("Fire_incidents.csv")
@@ -70,6 +72,6 @@ fire.floor.to.loss <- subset(fire.floor.to.loss, Floor < 25, Loss < 100000)
 plot(fire.floor.to.loss[,1], fire.floor.to.loss[,2],
      col="#FF3D00", type="p",
      pch=16,
-     main="Зависимость ущерба, причиненного пожаром, от этажа его возгорания в Сан-Франциско",
+     main="Зависимость ущерба, причиненного пожаром,\nот этажа его возгорания\nв Сан-Франциско",
      xlab="Этаж возгорания",
      ylab="Причиненный ущерб ($ США)")
