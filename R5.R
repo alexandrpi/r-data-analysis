@@ -1,4 +1,4 @@
-remove(regression, regression.fixed, price, sqft.living)
+remove(duration, data.cust, data.summer, data.sub, max_temp)
 data <- read.table("cust_less_1800_cnt_wkds.txt",
                    header=TRUE,
                    sep=";")
@@ -17,12 +17,20 @@ temp.min <- min(mean_temp)
 temp.max <- max(mean_temp)
 temp.diff <- temp.max - temp.min
 mean_temp <- mapply(function(temp) (temp - temp.min) / temp.diff, mean_temp)
-plot(mean_temp, count, col="#75B9BE", type="p",
-     pch=16,
+plot(mean_temp, count, col="#B8B42D", type="p",
+     pch=20,
      xlab="Средняя температура воздуха, F",
      ylab="Количество поездок")
 regression <- lm(formula=count ~ mean_temp)
 regression
 summary(regression)
-summary(regression.fixed)
-abline(regression, col="#EE7674", lwd="3")
+abline(regression, col="#C81D25", lwd="3")
+
+prognosis.temps <-c(53, 71, 64, 78, 46)
+prognosis.counts <- predict(regression, data.frame(mean_temp=prognosis.temps), level=0.9, interval="confidence") 
+prognosis.counts
+points(prognosis.temps,
+       prognosis.counts[,1],
+       col="#3E363F",
+       pch=17,
+       add=TRUE)
