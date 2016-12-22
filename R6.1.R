@@ -9,7 +9,7 @@ gym.data[, 2] <- mapply(function(timestamp) timestamp / 3600, gym.data[, 2])
 # apparent_temperature (6) — ощущаемая температура воздуха, в фаренгейтах
 # is_start_of_semester (8) — 1 - начало семестра, 0 - нет
 # number_people (1) — количество людей в зале
-cor(gym.data)
+write.csv(cor(gym.data), file = "gym_data_corr.csv")
 cor(gym.data[, 1], gym.data[, c(2, 4, 6, 8)])
 indices.train <- c(2375:7643, 9840:18466, 20071:26066)
 indices.test <- c(1:2374, 7644:9839, 18467:20070)
