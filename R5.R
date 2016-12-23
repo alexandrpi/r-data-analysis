@@ -25,7 +25,11 @@ regression <- lm(formula=count ~ mean_temp)
 regression
 summary(regression)
 abline(regression, col="#C81D25", lwd="3")
+<<<<<<< HEAD
+cor(count, mean_temp)
+=======
 
+>>>>>>> refs/remotes/origin/master
 prognosis.temps <-c(53, 71, 64, 78, 46)
 prognosis.counts <- predict(regression, data.frame(mean_temp=prognosis.temps), level=0.9, interval="confidence") 
 prognosis.counts
